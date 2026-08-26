@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200">
+    <title>Hello, I'm Claire Mactal</title>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #ffeff3; /* Pastel Pink Background */
+            color: #4a2b33;
+            font-family: 'Fredoka', 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 1100px;
+            margin: auto;
+        }
+
+      
+        .hero-card {
+            background: #ffffff;
+            border: 4px solid #ff4d79; /* Hello Kitty Pink/Red */
+            border-radius: 30px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(255, 77, 121, 0.25);
+            text-align: center;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .bow-tag {
+            background: #ff4d79;
+            color: #ffffff;
+            border: 2px dashed #ffb3c6;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(255, 77, 121, 0.3);
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ff2a5f;
+            letter-spacing: 1px;
+            margin: 0;
+            text-shadow: 2px 2px 0px #ffe6ed;
+        }
+
+        .subtitle-roles {
+            color: #ff6b8b;
+            font-size: 14px;
+            margin: 6px 0 20px 0;
+            font-weight: 600;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px auto;
+        }
+
+        .avatar-border {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px dotted #ff4d79;
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            animation: rotateDots 25s linear infinite;
+        }
+
+        .avatar-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border: 4px solid #ff4d79;
+        }
+
+        @keyframes rotateDots {
+            100% { transform: rotate(360deg); }
+        }
+
+        .typing-container {
+            height: 24px;
+            margin-bottom: 20px;
+        }
+
+        .typing-text {
+            color: #ff4d79;
+            font-size: 16px;
+            font-weight: bold;
+            border-right: 2px solid #ff4d79;
+            padding-right: 4px;
+            white-space: nowrap;
+            animation: blink 0.75s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: #ff4d79; }
+        }
+
+        .status-pill-btn {
+            background: #ff4d79;
+            color: #ffffff;
+            border: 3px solid #ffffff;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(255, 77, 121, 0.4);
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+            font-family: inherit;
+        }
+
+        .status-pill-btn:hover {
+            transform: scale(1.05);
+            background: #ff2a5f;
+        }
+
+        
+        .columns-wrapper {
+            display: none; 
+            grid-template-columns: repeat(2, minmax(500px, 1fr));
+            gap: 25px;
+            align-items: stretch;
+        }
+
+        
+        .gift-box-card {
+            position: relative;
+            background-color: #ffffff;
+            border: 4px solid #ffb3c6;
+            border-radius: 25px;
+            padding: 25px;
+            box-sizing: border-box;
+            box-shadow: 0 8px 20px rgba(255, 179, 198, 0.4);
+            overflow: hidden;
+            min-height: 220px;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        
+        .card-wrapper-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffe6ed;
+            border-radius: 20px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            box-shadow: inset 0 0 15px rgba(255, 77, 121, 0.2);
+        }
+
+        
+        .ribbon-v {
+            position: absolute;
+            width: 32px;
+            height: 100%;
+            background: #ff4d79;
+            box-shadow: 0 0 6px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .ribbon-h {
+            position: absolute;
+            height: 32px;
+            width: 100%;
+            background: #ff4d79;
+            box-shadow: 0 0 6px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .gift-bow {
+            position: relative;
+            z-index: 2;
+            font-size: 50px;
+            animation: bounce 2s infinite;
+            filter: drop-shadow(0 4px 6px rgba(255, 77, 121, 0.3));
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+
+        .gift-instruction {
+            position: relative;
+            z-index: 2;
+            color: #ff2a5f;
+            font-weight: bold;
+            margin-top: 6px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        
+        .gift-box-card.unwrapped .card-wrapper-cover {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1.08);
+        }
+
+        .gift-box-card.unwrapped .ribbon-v {
+            transform: scaleY(0);
+        }
+
+        .gift-box-card.unwrapped .ribbon-h {
+            transform: scaleX(0);
+        }
+
+        .card-content {
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .gift-box-card.unwrapped .card-content,
+        .gift-box-card.no-wrapper .card-content {
+            opacity: 1;
+        }
+
+        h1, h3 {
+            color: #ff2a5f;
+            margin-top: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        p, ul {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #5c3a43;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        
+        <div class="hero-card">
+            <div class="bow-tag"> HELLO ! </div>
+             <div class="bow-tag"> My name is</div>
+            <h1 class="hero-title">Claire Mactal</h1>
+             <div class="bow-tag"> I’m a </div>
+            <div class="subtitle-roles"> ♡ Student ♡ daughter (youngest) ♡ and a friend </div>
+
+            <div class="avatar-container">
+                <div class="avatar-border"></div>
+                <img src="kleng.jpg" alt="Claire Profile" class="avatar-img">
+            </div>
+
+            <div class="typing-container">
+                <span class="typing-text" id="typewriter"></span>
+            </div>
+
+            
+            <button class="status-pill-btn" onclick="revealWrappedGifts()"> Tap this ! 𐔌՞. .՞𐦯
+                
+            </button>
+        </div>
+
+        
+        <div id="contentColumns" class="columns-wrapper">
+
+            
+            <div class="gift-box-card" onclick="unwrapSingleGift(this)">
+                <div class="card-wrapper-cover">
+                    <div class="ribbon-v"></div>
+                    <div class="ribbon-h"></div>
+                    <div class="gift-bow">🎀</div>
+                    <div class="gift-instruction">Tap to open</div>
+                </div>
+                <div class="card-content">
+                    <h3>Personal Info:</h3>
+                    <p><b>Name:</b> ⋆˚࿔ Claire Mactal 𝜗𝜚˚⋆</p>
+                    <p><b>Pronouns:</b> She/Her</p>
+                    <p><b>MBTI:</b> <i>ENFP-T</i></p>
+                    <p><b>Age:</b> 13</p>
+                    <p><b>Birthdate:</b> April 26, 2013</p>
+                    <p><b>Zodiac Sign:</b> Taurus</p>
+                    <p><b>Nationality:</b> Filipino</p>
+                    <p><b>Address:</b> Brgy. Rajal Norte, Santa Rosa, Nueva Ecija.</p>
+                </div>
+            </div>
+
+            
+            <div class="gift-box-card" onclick="unwrapSingleGift(this)">
+                <div class="card-wrapper-cover">
+                    <div class="ribbon-v"></div>
+                    <div class="ribbon-h"></div>
+                    <div class="gift-bow">🎀</div>
+                    <div class="gift-instruction">Tap to open</div>
+                </div>
+                <div class="card-content">
+                    <h3>About Me:</h3>
+                    <p>
+                        Hi, my name is Claire. I’m still learning and discovering 
+                        myself as I do not understand myself exactly.
+                        I like to be creative, often painting,
+                        drawing, designing things, and making poems. I like to 
+                        explore different things. I express myself through art 
+                        and creativeness, putting feelings and emotion on every step. 
+                        I don’t usually say what I feel straight-forwardly. As I said, I like to be creative and so
+                        I dream to become either a fashion designer or an architect.
+                    </p>
+                    <p>
+                        I value kindness, honesty, friendship, and the people who make me feel comfortable being myself.
+                        I believe that even little things can be meaningful. I’m not perfect but life is not all about perfection. 
+                        Sometimes, the imperfections are what makes life beautiful.
+                    </p>
+                    <p>I’m excited to see where life takes me.</p>
+                </div>
+            </div>
+
+            
+            <div class="gift-box-card" onclick="unwrapSingleGift(this)">
+                <div class="card-wrapper-cover">
+                    <div class="ribbon-v"></div>
+                    <div class="ribbon-h"></div>
+                    <div class="gift-bow">⡞⠳⣄⣀⣠⠞✿⢷ ֹ۪</div>
+                    <div class="gift-instruction">Tap to open</div>
+                </div>
+                <div class="card-content">
+                    <h3>My Fav Bible Verses:</h3>
+                    <p><b>EPHESIANS 2:19-22</b><br>
+                    "WHENEVER YOU FEEL UNLOVED, UNIMPORTANT OR INSECURE, REMEMBER TO WHOM YOU BELONG."</p> 
+                    <p><b>PROVERBS 16:3</b><br>
+                    "COMMIT TO THE LORD WHATEVER YOU DO AND YOUR PLAN WILL SUCCEED."</p>
+                </div>
+            </div>
+
+            
+            <div class="gift-box-card" onclick="unwrapSingleGift(this)">
+                <div class="card-wrapper-cover">
+                    <div class="ribbon-v"></div>
+                    <div class="ribbon-h"></div>
+                    <div class="gift-bow">⚞^. .^⚟</div>
+                    <div class="gift-instruction">Tap to open</div>
+                </div>
+                <div class="card-content">
+                    <h3>Random Facts About Me:</h3>
+                    <ul>
+                        <li>Witty</li>
+                        <li>Loud</li>
+                        <li>Energetic</li>
+                        <li>Straightforward</li>
+                        <li>And friendly</li>
+                    </ul>
+                </div>
+            </div>
+
+            
+            <div class="gift-box-card" onclick="unwrapSingleGift(this)">
+                <div class="card-wrapper-cover">
+                    <div class="ribbon-v"></div>
+                    <div class="ribbon-h"></div>
+                    <div class="gift-bow">🎀</div>
+                    <div class="gift-instruction">Tap to open</div>
+                </div>
+                <div class="card-content">
+                    <h3>My Hobbies Are:</h3>
+                    <ul>
+                        <li>Crocheting</li>
+                        <li>Eating foods</li>
+                        <li>Staying up late</li>
+                        <li>Playing mobile games</li>
+                        <li>Dancing</li>
+                        <li>Singing</li>
+                        <li>Listening to music</li>
+                        <li>Taking photos</li>
+                        <li>Watching K-dramas and anime</li>
+                        <li>Drawing (I prefer digital)</li>
+                        <li>Reading Wattpad (Inksteady)</li>
+                        <li>And painting</li>
+                    </ul>
+                </div>
+            </div>
+
+            
+            <div class="gift-box-card no-wrapper">
+                <div class="card-content">
+                    <h3>You will get to know me more in the future. That’s all for now.</h3>
+                    <h1>Goodbye! </h1>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function revealWrappedGifts() {
+            const columns = document.getElementById("contentColumns");
+            columns.style.display = "grid";
+            columns.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function unwrapSingleGift(cardElement) {
+            cardElement.classList.add("unwrapped");
+        }
+
+        
+        const phrases = [
+            "♡",
+            "My name’s Claire",
+            "I like hello kitty",
+            "Hallooo"
+        ];
+
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const speed = 100;
+        const delay = 1500;
+        const target = document.getElementById("typewriter");
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                target.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                target.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, delay);
+                return;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+
+            setTimeout(typeEffect, isDeleting ? speed / 2 : speed);
+        }
+
+        document.addEventListener("DOMContentLoaded", typeEffect);
+    </script>
+
+</body>
+</html>
